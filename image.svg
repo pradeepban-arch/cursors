@@ -1,0 +1,48 @@
+<svg xmlns="http://w3.org" width="100%" height="100%" viewBox="0 0 800 600">
+  <foreignObject width="100%" height="100%">
+    <html xmlns="http://w3.org" lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Bit Planes</title>
+      <style>
+        html, body { 
+          cursor: url('https://cdn.jsdelivr.net/gh/pradeepban-arch/cursors@main/bruh.png') 16 16, pointer !important; 
+          margin: 0; 
+          padding: 0; 
+          height: 100vh; 
+          width: 100vw; 
+          overflow: hidden; 
+        } 
+        iframe { 
+          width: 100%; 
+          height: 100%; 
+          border: none; 
+          display: block; 
+        }
+      </style>
+    </head>
+    <body>
+      <iframe id="app-frame"></iframe>
+      <script type="text/javascript">
+        //<![CDATA[
+        // 1. Target your exact jsDelivr HTML file 
+        const url = "https://cdn.jsdelivr.net/gh/pradeepban-arch/Bit-Planes@main/index.html"; 
+        
+        // 2. Define the cursor CSS we want to inject inside the running code 
+        const cursorStyles = ` <style> html, body, a, button, select, input { cursor: url('https://cdn.jsdelivr.net/gh/pradeepban-arch/cursors@main/bruh.png') 16 16, pointer !important; } </style> `; 
+        
+        fetch(url) 
+          .then(response => response.text()) 
+          .then(htmlCode => { 
+            // 3. Inject the CSS right before the closing </head> tag of the fetched file 
+            const modifiedHtml = htmlCode.replace('</head>', cursorStyles + '</head>'); 
+            // 4. Force the iframe to run the modified code 
+            document.getElementById('app-frame').srcdoc = modifiedHtml; 
+          }) 
+          .catch(err => console.error("Error loading HTML file:", err));
+        //]]>
+      </script>
+    </body>
+    </html>
+  </foreignObject>
+</svg>
